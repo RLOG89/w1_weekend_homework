@@ -45,3 +45,23 @@ end
 #   end
 #   return counter
 # end
+
+def find_pet_by_name( pet_shop, name )
+  pets = Array.new()
+    for pet in pet_shop[:pets]
+      if name == pet[:name]
+        pets.push(pet)
+      end
+    end
+    return pets[0]
+end
+
+
+def remove_pet_by_name( pet_shop, name )
+  for pet in pet_shop[:pets]
+   if pet[:name] == name
+    pet_shop[:pets].delete(pet)
+  end
+end
+end
+
