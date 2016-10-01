@@ -26,3 +26,9 @@ end
 def pets_by_breed(obj, breed)
   return obj[:pets].select{|e| e[:breed] == breed}
 end
+
+def find_pet_by_name(obj, name)
+  a = obj[:pets].select {|e| e[:name] == name}
+  return nil if a.length == 0
+  return a[0]
+end
