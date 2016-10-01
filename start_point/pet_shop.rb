@@ -36,16 +36,6 @@ def pets_by_breed( pet_shop, breed )
   return pets_array
 end
 
-# def pets_by_breed( pet_shop, breed )
-#   counter = 0
-#   for pet in pet_shop[:pets]
-#     if breed == pet[:breed]
-#       counter += 1
-#     end
-#   end
-#   return counter
-# end
-
 def find_pet_by_name( pet_shop, name )
   pets = Array.new()
     for pet in pet_shop[:pets]
@@ -78,6 +68,11 @@ def add_pet_to_customer( customer, new_pet )
 end
 
 
-def customer_can_afford_pet()
-
+def customer_can_afford_pet( customer, pet )
+  can_buy_pet = false
+  if customer[:cash] >= pet[:price]
+    can_buy_pet = true
+  else can_buy_pet
+  end
 end
+
