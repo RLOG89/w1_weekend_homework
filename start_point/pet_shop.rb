@@ -1,43 +1,42 @@
-def pet_shop_name(obj)
-  '''Get pet shop name!'''
-  return obj[:name]
+def pet_shop_name(shop)
+  return shop[:name]
 end
 
-def total_cash(obj)
-  return obj[:admin][:total_cash]
+def total_cash(shop)
+  return shop[:admin][:total_cash]
 end
 
-def add_or_remove_cash(obj, amount)
-  obj[:admin][:total_cash] += amount
+def add_or_remove_cash(shop, amount)
+  shop[:admin][:total_cash] += amount
 end
 
-def pets_sold(obj)
-  return obj[:admin][:pets_sold]
+def pets_sold(shop)
+  return shop[:admin][:pets_sold]
 end
 
-def increase_pets_sold(obj, amount)
-  obj[:admin][:pets_sold] += amount
+def increase_pets_sold(shop, amount)
+  shop[:admin][:pets_sold] += amount
 end
 
-def stock_count(obj)
-  return obj[:pets].count
+def stock_count(shop)
+  return shop[:pets].count
 end
 
-def pets_by_breed(obj, breed)
-  return obj[:pets].select{|e| e[:breed] == breed}
+def pets_by_breed(shop, breed)
+  return shop[:pets].select{|e| e[:breed] == breed}
 end
 
-def find_pet_by_name(obj, name)
+def find_pet_by_name(shop, name)
   '''Broken because multiple pets could have the same name'''
-  obj[:pets].select {|e| e[:name] == name}[0]
+  shop[:pets].select {|e| e[:name] == name}[0]
 end
 
-def remove_pet_by_name(obj, name)
-  obj[:pets].reject! {|e| e[:name] == name}
+def remove_pet_by_name(shop, name)
+  shop[:pets].reject! {|e| e[:name] == name}
 end
 
-def add_pet_to_stock(obj, pet)
-  obj[:pets].push(pet)
+def add_pet_to_stock(shop, pet)
+  shop[:pets].push(pet)
 end
 
 def customer_pet_count(customer)
