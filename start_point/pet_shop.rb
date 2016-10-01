@@ -1,29 +1,28 @@
 require("pry-byebug")
 
-def pet_shop_name( shop_name )
-  return shop_name[:name]
+def pet_shop_name( pet_shop )
+  return pet_shop[:name]
 end
 
-def total_cash( pet_shop_cash )
-  return pet_shop_cash[:admin][:total_cash]
+def total_cash( pet_shop )
+  return pet_shop[:admin][:total_cash]
 end
 
-def add_or_remove_cash( pet_shop_cash, cash_added)
-  return pet_shop_cash[:admin][:total_cash] += cash_added
+def add_or_remove_cash( pet_shop, cash)
+  return pet_shop[:admin][:total_cash] += cash
 end
 
-def pets_sold( num_pets )
-  return num_pets[:admin][:pets_sold]
+def pets_sold( pet_shop )
+  return pet_shop[:admin][:pets_sold]
 end
 
-def increase_pets_sold( num_pets, addtional_pets_sold )
-  return num_pets[:admin][:pets_sold] += addtional_pets_sold
+def increase_pets_sold( pet_shop, sales )
+  return pet_shop[:admin][:pets_sold] += sales
 end
 
-def stock_count( pet_count )
-  return pet_count[:pets].count
+def stock_count( pet_shop )
+  return pet_shop[:pets].count
 end
-
 
 def pets_by_breed( pet_shop, breed )
   pets_array = []
@@ -71,4 +70,14 @@ end
 def customer_can_afford_pet( customer, pet )
   customer[:cash] >= pet[:price]
 end
+
+def sell_pet_to_customer( pet_shop, pet, customer )
+   return nil unless pet
+   return nil unless customer_can_afford_pet( customer, pet )
+    increase_pets_sold( pet_shop, 1 )
+    add_or_remove_cash( pet_shop, pet[:price] )
+    add_pet_to_customer( customer, pet )
+end
+
+# ask if should also deduct customer funds and remove pet from shop for completeness
 
